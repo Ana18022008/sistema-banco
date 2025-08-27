@@ -172,7 +172,7 @@ public class Atendente {
 
     public void naoEncontrado() { //Caso o sistema não encontre a conta/ número
         System.out.println("\n|--------------------------------------");
-        System.out.println("|Conta não encontrada! tente novamente|");
+        System.out.println("|Conta não encontrada! tente novamente.|");
         System.out.println("|--------------------------------------");
     }
 
