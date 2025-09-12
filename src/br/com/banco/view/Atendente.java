@@ -1,4 +1,5 @@
 package br.com.banco.view;
+
 import java.util.Scanner;
 import br.com.banco.model.Conta;
 import br.com.banco.model.ContaPoupanca;
@@ -7,8 +8,13 @@ import br.com.banco.service.Banco;
 
 public class Atendente {
     Scanner sc = new Scanner(System.in);
+    private Banco banco;
 
-    public int escolhaAcao() { //para escolher a ação inicial
+    public Atendente(Banco banco) {
+        this.banco = banco;
+    }
+
+    public int escolhaAcao() {
         System.out.println("\n -------- MENU --------");
         System.out.println("|1. Cadastrar Conta");
         System.out.println("|2. Depositar");
@@ -21,11 +27,10 @@ public class Atendente {
         System.out.println("|0. Sair");
         System.out.println("| -----------------------");
         System.out.print("> ");
-        int escolhaAcao = sc.nextInt();
-        return escolhaAcao;
+        return sc.nextInt();
     }
 
-    public int escolhaConta() { //para escolher a conta
+    public int escolhaConta() {
         System.out.println("\n ------- CONTAS -------");
         System.out.println("|1. Conta Corrente");
         System.out.println("|2. Conta Poupança");
@@ -33,117 +38,119 @@ public class Atendente {
         System.out.println("| -----------------------");
         System.out.print("> ");
         int escolhaConta = sc.nextInt();
+        sc.nextLine();
         return escolhaConta;
     }
 
-    public String numero() { //métodos para o cadastro geral
+    //cadastrar
+
+    public String numero() {
         System.out.println("\n Número da conta: ");
         System.out.print("> ");
-        String numero = sc.nextLine();
-        return numero;
+        return sc.nextLine();
     }
 
     public String titular() {
         System.out.println("\nNome do titular: ");
         System.out.print("> ");
-        String titular = sc.nextLine();
-        return titular;
+        return sc.nextLine();
     }
 
     public double saldo() {
         System.out.println("\nSaldo da conta: ");
         System.out.print("> ");
-        double saldo = sc.nextDouble();
-        return saldo;
+        return sc.nextDouble();
     }
 
-    public double limite() { //extra da conta corrente
+    public double limite() {
         System.out.println("\nSaldo limite: ");
         System.out.print("> ");
-        double limite = sc.nextDouble();
-        return limite;
+        return sc.nextDouble();
     }
 
-    public double taxaRendimento() { //extra da conta poupança
+    public double taxaRendimento() {
         System.out.println("\nTaxa de rendimento mensal: ");
         System.out.print("> ");
-        double taxaRendimento = sc.nextDouble();
-        return taxaRendimento;
+        return sc.nextDouble();
     }
 
-    public String deposito() { //conta escolhida para depositar
+    //funcionalidades
+
+    public String deposito() {
         System.out.println("\n|---- DEPOSITO ----");
         System.out.println("|Número da Conta:");
         System.out.println("|-----------------");
         System.out.print("> ");
-        String numeroDeposito = sc.nextLine();
-        return numeroDeposito;
+        return sc.nextLine();
     }
 
-    public double valorDeposito() { //valor a depositar
+    public double valorDeposito() {
         System.out.println("|------------------");
         System.out.println("|Valor a depositar:");
         System.out.println("|------------------");
         System.out.print("> ");
-        double valorDeposito = sc.nextDouble();
-        return valorDeposito;
+        return sc.nextDouble();
     }
 
-    public String Saque() { //para saber a conta que fará o saque
+    public String saque() {
         System.out.println("\n|------ SAQUE ------");
         System.out.println("|Número da Conta:");
         System.out.println("|------------------");
         System.out.print("> ");
-        String numeroSaque = sc.nextLine();
-        return numeroSaque;
+        return sc.nextLine();
     }
 
-    public double valorSaque() { //para saber o valor do saque
+    public double valorSaque() {
         System.out.println("| -----------------");
         System.out.println("|Valor a sacar:");
         System.out.println("| -----------------");
         System.out.print("> ");
-        double valorSaque = sc.nextDouble();
-        return valorSaque;
+        return sc.nextDouble();
     }
 
-    public String enviartransferencia() { // conta que envia
-        System.out.println("\n|----- DEPÓSITO -----");
-        System.out.println("|Número da sua Conta:");
-        System.out.println("|--------------------");
+    public String enviartransferencia() {
+        System.out.println("\n|---- TRANSFERÊNCIA ----");
+        System.out.println("|Número da sua Conta:  |");
+        System.out.println("|-----------------------");
         System.out.print("> ");
-        String enviartransferencia = sc.nextLine();
-        return enviartransferencia;
+        return sc.nextLine();
     }
 
-    public String receberTransferencia() { // conta que recebe
+    public String receberTransferencia() {
         System.out.println("\n| -----------------");
         System.out.println("|Conta destinatária:");
         System.out.println("| -----------------");
         System.out.print("> ");
-        String receberTransferencia = sc.nextLine();
-        return receberTransferencia;
+        return sc.nextLine();
     }
 
-    public double valorTransferencia() { //valor a transferir
+    public double valorTransferencia() {
         System.out.println("\n| -----------------");
         System.out.println("|Valor:");
         System.out.println("| -----------------");
         System.out.print("> ");
-        double valorTransferencia = sc.nextDouble();
-        return valorTransferencia;
+        return sc.nextDouble();
     }
 
-    public String pesquisa() { //para pesquisar uma conta pelo número
+    public String pesquisa() {
         System.out.println("\n| ----- PESQUISA -----");
         System.out.println("|Número da Conta:");
         System.out.println("| --------------------");
         System.out.print("> ");
-        String numeroPesquisa = sc.nextLine();
-        return numeroPesquisa;
+        return sc.nextLine();
     }
 
-    public void visualizarConta(Conta conta) { //visualizar contas
+    public String excluir() {
+        System.out.println("\n| ----- EXCLUSÃO -----");
+        System.out.println("|Número da Conta:");
+        System.out.println("| --------------------");
+        System.out.println("> ");
+        return sc.nextLine();
+    }
+
+   //listagem das contas
+
+    public void visualizarConta(Conta conta) {
         System.out.println("|------------------------------------------------------");
         System.out.println(conta);
         System.out.println("\n|------------------------------------------------------");
@@ -155,30 +162,77 @@ public class Atendente {
         System.out.println("\n|------------------------------------------------------");
     }
 
-    public void visualizarCp(ContaPoupanca cp) {
+    public void visualizarCP(ContaPoupanca cp) {
         System.out.println("|------------------------------------------------------");
         System.out.println(cp);
         System.out.println("\n|------------------------------------------------------");
     }
 
-    public String excluir() { //Para excluir uma conta pelo número
-        System.out.println("\n| ----- EXCLUSÃO -----");
-        System.out.println("|Número da Conta:");
-        System.out.println("| --------------------");
-        System.out.println("> ");
-        String numeroExcluir = sc.nextLine();
-        return numeroExcluir;
+    public void itemPesquisa(ContaCorrente cc) {
+        System.out.println("|------------------------------------------------------");
+        System.out.println(cc);
+        System.out.println("\n|------------------------------------------------------");
     }
 
-    public void naoEncontrado() { //Caso o sistema não encontre a conta/ número
+    public void itemPesquisa(ContaPoupanca cp) {
+        System.out.println("|------------------------------------------------------");
+        System.out.println(cp);
+        System.out.println("\n|------------------------------------------------------");
+    }
+
+    public void itemPesquisa(Conta c) {
+        System.out.println("|------------------------------------------------------");
+        System.out.println(c);
+        System.out.println("\n|------------------------------------------------------");
+    }
+
+    //mensagens
+
+    public void naoEncontrado() {
         System.out.println("\n|--------------------------------------");
         System.out.println("|Conta não encontrada! tente novamente.|");
         System.out.println("|--------------------------------------");
     }
 
-    public void mensagemErro() { //mensagens para caso de erro
+    public void mensagemErro() {
         System.out.println("\n|-----------------------------------");
         System.out.println("|Entrada inválida! Tente novamente.|");
+        System.out.println("|-----------------------------------");
+    }
+
+    public void sucessoCadastro() {
+        System.out.println("\n|-----------------------------------");
+        System.out.println("|   Conta cadastrada com sucesso!  |");
+        System.out.println("|-----------------------------------");
+    }
+
+    public void sucessoExclusao() {
+        System.out.println("\n|-----------------------------------");
+        System.out.println("|    Conta removida com sucesso!   |");
+        System.out.println("|-----------------------------------");
+    }
+
+    public void sucessoDeposito() {
+        System.out.println("\n|-----------------------------------");
+        System.out.println("|   Depósito feito com sucesso!    |");
+        System.out.println("|-----------------------------------");
+    }
+
+    public void sucessoSaque() {
+        System.out.println("\n|--------------------------------");
+        System.out.println("|   Saque feito com sucesso!    |");
+        System.out.println("|--------------------------------");
+    }
+
+    public void sucessoTransferencia(){
+        System.out.println("\n|-----------------------------------");
+        System.out.println("| Transferência feito com sucesso! |");
+        System.out.println("|-----------------------------------");
+    }
+
+    public void saldoInsuficiente(){
+        System.out.println("\n|-----------------------------------");
+        System.out.println("|        Saldo insuficiente!       |");
         System.out.println("|-----------------------------------");
     }
 

@@ -25,6 +25,6 @@ public class ContaPoupanca extends Conta{
 
     @Override
     public String toString(){
-        return "\n - Conta Salário - \nNúmero: " + getNumero() + "\n Titular: " + getTitular() + "\n Saldo: " + getSaldo() + "\n Taxa de Rendimento p.m: " + taxaRendimento + "%.";
+        return "\n - Conta Poupança - \n Número: " + getNumero() + "\n Titular: " + getTitular() + "\n Saldo: " + getSaldo() + "\n Taxa de Rendimento p.m: " + taxaRendimento + "%.";
     }
 }
