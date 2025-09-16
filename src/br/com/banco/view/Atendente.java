@@ -42,6 +42,33 @@ public class Atendente {
         return escolhaConta;
     }
 
+    //login
+
+    public int login(){
+        System.out.println("\n|---- LOGIN ----");
+        System.out.println("|1.Criar conta  \n|2.Fazer login ");
+        System.out.println("|-----------------");
+        System.out.print("> ");
+        int escolhaLogin = sc.nextInt();
+        sc.nextLine();
+        return escolhaLogin;
+    }
+
+    public String user() {
+        System.out.println("\n|---- USUÁRIO ----");
+        System.out.println("|Insira seu user:");
+        System.out.println("|-----------------");
+        System.out.print("> ");
+        return sc.nextLine();
+    }
+
+    public String password() {
+        System.out.println("\n|Insira sua senha:");
+        System.out.println("|------------------");
+        System.out.print("> ");
+        return sc.nextLine();
+    }
+
     //cadastrar
 
     public String numero() {
@@ -148,7 +175,7 @@ public class Atendente {
         return sc.nextLine();
     }
 
-   //listagem das contas
+    //listagem das contas
 
     public void visualizarConta(Conta conta) {
         System.out.println("|------------------------------------------------------");
@@ -224,13 +251,13 @@ public class Atendente {
         System.out.println("|--------------------------------");
     }
 
-    public void sucessoTransferencia(){
+    public void sucessoTransferencia() {
         System.out.println("\n|-----------------------------------");
         System.out.println("| Transferência feito com sucesso! |");
         System.out.println("|-----------------------------------");
     }
 
-    public void saldoInsuficiente(){
+    public void saldoInsuficiente() {
         System.out.println("\n|-----------------------------------");
         System.out.println("|        Saldo insuficiente!       |");
         System.out.println("|-----------------------------------");
@@ -238,5 +265,11 @@ public class Atendente {
 
     public void sair() {
         System.out.println("\n Saindo...");
+    }
+
+    public void usuarioExistente() {
+        System.out.println("\n|-----------------------------------");
+        System.out.println("|   Nome de usuário indisponível!  |");
+        System.out.println("|-----------------------------------");
     }
 }
