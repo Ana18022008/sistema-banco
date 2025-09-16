@@ -24,9 +24,19 @@ public class Atendente {
         System.out.println("|6. Excluir conta");
         System.out.println("|7. Pesquisar por número");
         System.out.println("| -----------------------");
-        System.out.println("|0. Sair");
+        System.out.println("|0. Voltar");
         System.out.println("| -----------------------");
         System.out.print("> ");
+        return sc.nextInt();
+    }
+
+    public int escolhaAcaoUsuario(){
+        System.out.println("\n -------- MENU --------");
+        System.out.println("|1. Cadastrar Conta");
+        System.out.println("|2. Transferir ");
+        System.out.println("| -----------------------");
+        System.out.println("|0. Voltar");
+        System.out.println("| ----------------------- \n >");
         return sc.nextInt();
     }
 
@@ -47,6 +57,8 @@ public class Atendente {
     public int login(){
         System.out.println("\n|---- LOGIN ----");
         System.out.println("|1.Criar conta  \n|2.Fazer login ");
+        System.out.println("| -----------------------");
+        System.out.println("|0. Sair");
         System.out.println("|-----------------");
         System.out.print("> ");
         int escolhaLogin = sc.nextInt();
@@ -271,5 +283,17 @@ public class Atendente {
         System.out.println("\n|-----------------------------------");
         System.out.println("|   Nome de usuário indisponível!  |");
         System.out.println("|-----------------------------------");
+    }
+
+    public void erroLogin(){
+        System.out.println("\n|-----------------------------------");
+        System.out.println("|   Usuário ou senha incorretos!   |");
+        System.out.println("|-----------------------------------");
+    }
+
+    public void numeroMaximo(){
+        System.out.println("\n|-----------------------------------------");
+        System.out.println("| Você criou o número máximo de contas!  |");
+        System.out.println("|-----------------------------------------");
     }
 }

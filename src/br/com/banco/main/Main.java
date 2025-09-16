@@ -15,6 +15,5 @@ public class Main {
             banco.gerenciarBanco(atendente);
         } while (escolhaAcao != 0);
 
-        atendente.sair();
     }
 }
