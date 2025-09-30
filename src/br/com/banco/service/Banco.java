@@ -61,6 +61,7 @@ public class Banco {
                 }
             }
 
+        assert usuario != null;
         boolean admin = usuario.isAdmin();
 
             if (admin){
@@ -72,33 +73,48 @@ public class Banco {
                     case 1 -> {
                         switch (escolhaConta) {
                             case 1 -> {
-                                String numeroCC = atendente.numero();
-                                String titularCC = atendente.titular();
-                                double saldoCC = atendente.saldo();
-                                double limite = atendente.limite();
+                                try {
+                                    String numeroCC = atendente.numero();
+                                    String titularCC = atendente.titular();
+                                    double saldoCC = atendente.saldo();
+                                    double limite = atendente.limite();
 
-                                Conta contaCorrente = new ContaCorrente(numeroCC, titularCC, saldoCC, limite);
-                                contas.add(contaCorrente);
-                                atendente.sucessoCadastro();
+                                    Conta contaCorrente = new ContaCorrente(numeroCC, titularCC, saldoCC, limite);
+                                    contas.add(contaCorrente);
+                                    atendente.sucessoCadastro();
+
+                                }catch(NullPointerException e){
+                                    e.printStackTrace();
+                                }
                             }
                             case 2 -> {
-                                String numeroCP = atendente.numero();
-                                String titularCP = atendente.titular();
-                                double saldoCP = atendente.saldo();
-                                double taxaRendimento = atendente.taxaRendimento();
+                                try {
+                                    String numeroCP = atendente.numero();
+                                    String titularCP = atendente.titular();
+                                    double saldoCP = atendente.saldo();
+                                    double taxaRendimento = atendente.taxaRendimento();
 
-                                Conta contaPoupanca = new ContaPoupanca(numeroCP, titularCP, saldoCP, taxaRendimento);
-                                contas.add(contaPoupanca);
-                                atendente.sucessoCadastro();
+                                    Conta contaPoupanca = new ContaPoupanca(numeroCP, titularCP, saldoCP, taxaRendimento);
+                                    contas.add(contaPoupanca);
+                                    atendente.sucessoCadastro();
+
+                                }catch(NullPointerException e){
+                                    e.printStackTrace();
+                                }
                             }
                             case 3 -> {
-                                String numero = atendente.numero();
-                                String titular = atendente.titular();
-                                double saldo = atendente.saldo();
+                                try {
+                                    String numero = atendente.numero();
+                                    String titular = atendente.titular();
+                                    double saldo = atendente.saldo();
 
-                                Conta conta = new Conta(numero, titular, saldo); // só se Conta não for abstrata
-                                contas.add(conta);
-                                atendente.sucessoCadastro();
+                                    Conta conta = new Conta(numero, titular, saldo); // só se Conta não for abstrata
+                                    contas.add(conta);
+                                    atendente.sucessoCadastro();
+
+                                }catch(NullPointerException e){
+                                    e.printStackTrace();
+                                }
                             }
                             default -> atendente.mensagemErro();
                         }
@@ -399,7 +415,7 @@ public class Banco {
                             }
                             case 3 -> {
                                 for (Conta listaContas : contas) {
-                                    if (!(listaContas instanceof ContaCorrente) && !(listaContas instanceof ContaPoupanca) && listaContas instanceof Conta conta) {
+                                    if (!(listaContas instanceof ContaCorrente) && !(listaContas instanceof ContaPoupanca) && listaContas != null) {
                                         atendente.visualizarConta(listaContas);
                                     }
                                 }
